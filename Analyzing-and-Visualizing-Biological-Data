@@ -1,0 +1,34 @@
+# Nihkelle Schmalzbach-Scott Homework 7 
+
+# Problem 2
+if (!require("readxl")) install.packages("readxl", dependencies = TRUE)
+if (!require("ggplot2")) install.packages("ggplot2", dependencies = TRUE)
+library(readxl)
+library(ggplot2)
+library(readxl)
+BeaverData <- read_excel("Downloads/BeaverData.xlsx")
+print(BeaverData)
+plot1 <- ggplot(BeaverData, aes(x = time, y = temp)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Body Temperature vs Time of Day",
+       x = "Day",
+       y = "Temp")
+plot2 <- ggplot(BeaverData, aes(x = time, y = temp)) +
+  geom_line() +
+  labs(title = "Body Temperature vs Time of Day",
+       x = "Time of Day",
+       y = "Body Temperature")
+print(plot1)
+print(plot2)
+
+# Problem 3
+getMiddle <- function(input_vector) {
+  if (length(input_vector) < 3) {
+    print("Vector must have at least three elements.")
+    return(NULL)}
+  middle_vector <- input_vector[-c(1, length(input_vector))]
+  return(middle_vector)}
+testVector <- c(1, 2, 3, 4, 5)
+result <- getMiddle(testVector)
+print(result)
